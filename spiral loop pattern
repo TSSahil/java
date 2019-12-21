@@ -1,0 +1,128 @@
+class Test
+{
+	static int ar[][]={{1,2,3,4,5,6},
+					   {7,8,9,10,11,12},
+					   {13,14,15,16,17,18},
+					   {19,20,21,22,23,24},
+					   {25,26,27,28,29,30},
+					   {31,32,33,34,35,36}
+					};
+	public static void main(String args[])
+	{
+		
+		for(int i=0;i<ar[0].length;i++)
+		{
+			for(int j=0;j<ar[0].length;j++)
+			{
+				System.out.print(ar[i][j]+"\t");
+			}
+			System.out.print("\n\n");
+
+		}
+		System.out.print("\n\n\n\n");
+		spiral();
+		/*for(int i=0;i<ar[0].length;i++)
+		{
+			for(int j=0;j<ar[0].length;j++)
+			{
+				System.out.print(ar[i][j]+"\t");
+			}
+			System.out.print("\n\n");
+
+		}*/
+	}
+	public static void spiral()
+	{
+		int s=0;
+		int e=ar[0].length-1;
+		while(s<e)
+		{
+			callTraverse(s,e);
+			e--;
+			s++;
+		}
+		/*callTraverse(0,3);
+		callTraverse(1,2);*/
+		
+		
+	//	return ar;
+	}
+	public static void callTraverse(int s,int e)
+	{
+		traverse(s,s,s,e);
+		traverse(s,e,e,e);
+		traverse(e,e,e,s);
+		traverse(e,s,s,s);
+	}
+public static void traverse(int rs,int cs,int re,int ce)
+	{
+		
+		int p;
+		if(rs<re||cs<ce)
+		{
+			if(rs==re)
+			{
+				p=cs;
+				//System.out.print("["+rs+"]["+p+"]----");
+				for(;p<ce;p++)
+				{
+					if(ar[rs][p]>-1)
+					{
+						System.out.print(ar[rs][p]+"  ");
+						ar[rs][p]=-1;
+					}
+					
+				}
+				//System.out.print(" \n");
+			}
+			else if(cs==ce)
+			{
+				p=rs;
+				//System.out.print("["+p+"]["+cs+"]----");
+				for(;p<re;p++)
+				{
+					if(ar[p][cs]>-1)
+					{
+						System.out.print(ar[p][cs]+"  ");
+						ar[p][cs]=-1;
+					}
+				}
+					//			System.out.print(" \n");
+			}
+		}
+		else if(cs>ce||rs>re)
+		{
+			if(rs==re)
+			{
+				p=cs;
+				//System.out.print("["+rs+"]["+p+"]----");
+				for(;p>-1;p--)
+				{
+					if(ar[rs][p]>-1)
+					{
+						System.out.print(ar[rs][p]+"  ");
+						ar[rs][p]=-1;
+					}
+				}
+						//		System.out.print(" \n");
+			}
+			else if(cs==ce)
+			{
+				p=rs;
+				//System.out.print("["+p+"]["+cs+"]----");
+				for(;p>-1;p--)
+				{
+					if(ar[p][cs]>-1)
+					{
+						System.out.print(ar[p][cs]+"  ");
+						ar[p][cs]=-1;
+					}
+				}
+					//			System.out.print(" \n");
+			}
+		}
+		
+		
+		
+	}
+}
